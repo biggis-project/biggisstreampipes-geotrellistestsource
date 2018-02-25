@@ -18,6 +18,7 @@ public enum Config implements PeConfig {
     private final static String KAFKA_PORT = "kafka_port";
 
     private final static String SOURCE_LAYERS = "layer names";
+    private final static String SOURCE_INTERVAL = "Source interval";
     private final static String EXTENT_MIN_X = "Extent min x";
     private final static String EXTENT_MIN_Y = "Extent min y";
     private final static String EXTENT_MAX_X = "Extent max x";
@@ -35,6 +36,7 @@ public enum Config implements PeConfig {
         config.register(KAFKA_HOST, "kafka", "Host for kafka of the pe sinks project");
         config.register(KAFKA_PORT, 9092, "Port for kafka of the pe sinks project");
         config.register(SOURCE_LAYERS, "test1,test2,test3", "List of layer names (comma separated)");
+        config.register(SOURCE_INTERVAL, 1000, "The sending interval of the data source (in seconds)");
         config.register(EXTENT_MIN_X, 8,  "The minimum value for the x coordinate");
         config.register(EXTENT_MIN_Y, 48, "The minimum value for the y coordinate");
         config.register(EXTENT_MAX_X, 9,  "The maximum value for the x coordinate");
@@ -61,6 +63,10 @@ public enum Config implements PeConfig {
 
     public String getSourceLayers() {
         return config.getString(SOURCE_LAYERS);
+    }
+
+    public int getSourceInterval() {
+        return config.getInteger(SOURCE_INTERVAL);
     }
 
     public double getExtent_minx() {

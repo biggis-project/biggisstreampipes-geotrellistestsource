@@ -71,6 +71,7 @@ public class ExtentLayernameStream extends AbstractAdapterIncludedStream impleme
         KafkaProducer<String, String> producer = new KafkaProducer<>(kafkaParams);
 
         String[] layernames = Config.INSTANCE.getSourceLayers().split("\\s*,\\s*");
+        int interval = Config.INSTANCE.getSourceInterval();
         double minX = Config.INSTANCE.getExtent_minx();
         double minY = Config.INSTANCE.getExtent_miny();
         double maxX = Config.INSTANCE.getExtent_maxx();
@@ -106,7 +107,7 @@ public class ExtentLayernameStream extends AbstractAdapterIncludedStream impleme
             producer.send(new ProducerRecord<String, String>(topic, json));
 
             try {
-                Thread.sleep(1000);
+                Thread.sleep(1000 * interval);
             } catch (InterruptedException e) {
                 //ignore
             }
