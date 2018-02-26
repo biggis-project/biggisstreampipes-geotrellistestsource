@@ -25,12 +25,12 @@ import java.util.concurrent.ThreadLocalRandom;
  * Created by Jochen Lutz on 2018-02-25.
  */
 public class ExtentLayernameStream extends AbstractAdapterIncludedStream implements Runnable {
-    private final String topic = "org.streampipes.biggis.geotrellis.extendLayername";
+    private final String topic = "org.streampipes.biggis.geotrellis.extentLayername";
 
     @Override
     public SpDataStream declareModel(DataSourceDescription dataSourceDescription) {
-        return DataStreamBuilder.create("layername-extend", "Layer name + Extend", "")
-                .iconUrl(Config.iconBaseUrl + "/layername-extend.png")
+        return DataStreamBuilder.create("layername-extent", "Layer name + Extend", "")
+                .iconUrl(Config.iconBaseUrl + "/layername-extent.png")
                 .property(EpProperties.timestampProperty("timestamp"))
                 .property(PrimitivePropertyBuilder
                         .create(Datatypes.String, "layername")
@@ -41,7 +41,7 @@ public class ExtentLayernameStream extends AbstractAdapterIncludedStream impleme
                         .build())
                 .property(PrimitivePropertyBuilder
                         .create(Datatypes.String, "extent")
-                        .label("Extend")
+                        .label("Extent")
                         .description("A Geotrellis extent [xmin, ymin, xmax, ymax]")
                         .domainProperty("http://types.streampipes.org/GeotrellisExtent")
                         .scope(PropertyScope.MEASUREMENT_PROPERTY)
