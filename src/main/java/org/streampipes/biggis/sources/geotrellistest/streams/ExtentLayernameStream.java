@@ -29,7 +29,7 @@ public class ExtentLayernameStream extends AbstractAdapterIncludedStream impleme
 
     @Override
     public SpDataStream declareModel(DataSourceDescription dataSourceDescription) {
-        return DataStreamBuilder.create("layername-extent", "Layer name + Extend", "")
+        return DataStreamBuilder.create("layername-extent", "Layer name + Extent", "")
                 .iconUrl(Config.iconBaseUrl + "/layername-extent.png")
                 .property(EpProperties.timestampProperty("timestamp"))
                 .property(PrimitivePropertyBuilder
