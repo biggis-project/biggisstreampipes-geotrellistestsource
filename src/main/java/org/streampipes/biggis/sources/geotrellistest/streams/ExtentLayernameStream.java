@@ -89,10 +89,10 @@ public class ExtentLayernameStream extends AbstractAdapterIncludedStream impleme
                     .append("  \"timestamp\": ")
                     .append(System.currentTimeMillis()/1000)
                     .append(",\n")
-                    .append("  \"layername\": ")
+                    .append("  \"layername\": \"")
                     .append(layer)
-                    .append(",\n")
-                    .append("  \"extent\": [")
+                    .append("\",\n")
+                    .append("  \"extent\": \"[")
                     .append(x1)
                     .append(",")
                     .append(y1)
@@ -100,7 +100,7 @@ public class ExtentLayernameStream extends AbstractAdapterIncludedStream impleme
                     .append(x2)
                     .append(",")
                     .append(y2)
-                    .append("]\n")
+                    .append("]\"\n")
                     .append("}")
                     .toString();
 
@@ -109,7 +109,8 @@ public class ExtentLayernameStream extends AbstractAdapterIncludedStream impleme
             try {
                 Thread.sleep(1000 * interval);
             } catch (InterruptedException e) {
-                //ignore
+                System.out.println("Error while sleeping:");
+                e.printStackTrace();
             }
         }
     }
